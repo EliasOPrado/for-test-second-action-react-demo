@@ -10,7 +10,7 @@ jobs:
             - name: Install Node.js # step 2
               uses: actions/setup-node@v3
               with:
-                node-version: '18'
+                node-version: '24'
             - name: Install dependencies # step 3
               run: npm ci
             - name: Run tests # step 4
