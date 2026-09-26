@@ -1,0 +1,33 @@
+name: Test project and deploy
+
+on: push
+jobs:
+    test:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Get code # step 1
+              uses: actions/checkout@v3
+            - name: Install Node.js # step 2
+              uses: actions/setup-node@v3
+              with:
+                node-version: '18'
+            - name: Install dependencies # step 3
+              run: npm ci
+            - name: Run tests # step 4
+              run: npm test
+    deployment:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Get code # step 1
+              uses: actions/checkout@v3
+            - name: Install Node.js # step 2
+              uses: actions/setup-node@v3
+              with:
+                node-version: '18'
+            - name: Install dependencies # step 3
+              run: npm ci
+            - name: Build project # step 4
+              run: npm run build
+            - name: Deploy
+              run: echo "Deploying to production..." # Replace with your deployment command
+
